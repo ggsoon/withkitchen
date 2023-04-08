@@ -22,9 +22,11 @@ public class Product {
     @Column(length = 150)
     private String name;
 
+    // 상품의 종류 찌개, 과일
     @Column(nullable = false, length = 50)
     private String type;
 
+    // 상세정보
     private String description;
 
     @Column(length = 255)

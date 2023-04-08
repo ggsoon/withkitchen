@@ -21,6 +21,7 @@ public class Review {
     @Column(length = 300)
     private String content;
 
+    // 사용자가 등록한 이미지
     @Column(length = 600)
     private String img;
 }

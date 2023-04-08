@@ -18,5 +18,6 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // 담은 갯수
     private int count;
 }
