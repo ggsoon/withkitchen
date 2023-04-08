@@ -1,14 +1,15 @@
 package com.food.withkitchen.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -17,12 +18,14 @@ public class SecurityConfiguration {
 
     private final JwtTokenProvider jwtTokenProvider;
     @Autowired
-    SecurityConfiguration(JwtTokenProvider jwtTokenProvider) { this.jwtTokenProvider = jwtTokenProvider; }
+    public SecurityConfiguration(JwtTokenProvider jwtTokenProvider) { this.jwtTokenProvider = jwtTokenProvider; }
 
 
     // WebSecurityConfigurerAdapter는 deprecated가 되었다. 이 클래스는 컴포넌트 기반의 보안 설정을 권장한다는 이유다. 대신에 SecurityFilterChain를 쓴다. 빈을 등록하고 SecurityFilterChain을 반환한다는 차이가 있다.
     // 전에는 configure 메소드를 오버라이드해 필턴 체인을 구성해 설정이 복잡해지면 코드가 복잡해진다. 반면 필터 체인 구성을 위한 빈으로 등록하면 각 보안 기능을 컴포넌트로 분리하고 필요한 컴포넌트를
     // 가져와 필터 체인을 구성해서 좀 더 모듈화해 설정이 복잡해져도 독립적으로 개발하고 유지보수가 용이해진다.
+    @Bean
+    @Order(SecurityProperties.BASIC_AUTH_ORDER) // 기본 인증 필터 체인의 순서를 지정한다.
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic().disable()
 //                .csrf().disable()
