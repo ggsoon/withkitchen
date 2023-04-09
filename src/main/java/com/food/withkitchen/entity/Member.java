@@ -27,7 +27,7 @@ public class Member extends BaseEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, updatable = true)
+    @Column(nullable = false, updatable = true, length = 255)
     private String uid; // JWT 토큰 내 정보
 
     @ElementCollection(fetch = FetchType.EAGER)
