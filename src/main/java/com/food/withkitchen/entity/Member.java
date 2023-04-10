@@ -1,5 +1,6 @@
 package com.food.withkitchen.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,8 +28,8 @@ public class Member extends BaseEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, updatable = true, length = 255)
-    private String uid; // JWT 토큰 내 정보
+//    @Column(nullable = false, updatable = true, length = 255)
+//    private String uid; // JWT 토큰 내 정보
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -37,20 +38,20 @@ public class Member extends BaseEntity implements UserDetails {
     @Column(nullable = false, unique = true, length = 15)
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false, length = 150)
     private String password;
 
     @Column(nullable = false, unique = true, length = 50)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-    }
-
-    @Override
-    public String getUsername() {
-        return this.uid;
     }
 
     // 계정이 만료되었는지 확인하는 로직
