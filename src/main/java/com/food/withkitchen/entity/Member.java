@@ -35,7 +35,7 @@ public class Member extends BaseEntity implements UserDetails {
     private List<String> roles = new ArrayList<>();
 
     @Column(nullable = false, unique = true, length = 15)
-    private String name;
+    private String username;
 
     @Column(nullable = false, length = 150)
     private String password;
@@ -59,7 +59,7 @@ public class Member extends BaseEntity implements UserDetails {
         return true;
     }
 
-    // 계정이 잠겼는지 확인하는 로직, 사용하지 않으므로 true
+    // 계정이 잠겼는지 확인하는 로직
     @Override
     public boolean isAccountNonLocked() {
         return true;
