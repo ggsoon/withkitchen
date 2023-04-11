@@ -28,10 +28,4 @@ public class MenuController {
         return "/about";
     }
 
-    @GetMapping("/signin")
-    public String signin() {
-        return "signin";
-    }
-
-
 }
