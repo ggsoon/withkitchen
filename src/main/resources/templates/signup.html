@@ -12,7 +12,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-sm-12">
-                        <h1 class="signup_taital">아이디와 패스워드를 입력해주세요.</h1>
+                        <h1 class="signup_taital">아래 정보를 모두 입력해주세요.<br>단, 관리자면 Role에 관리자 코드를 넣어주시고 일반 고객일경우 입력하지 말아 주세요.</h1>
                      </div>
                   </div>
                </div>
@@ -21,10 +21,13 @@
                      <div class="row">
                         <div class="col-md-6">
                            <div class="mail_section_1">
-                              <form action="/signup" method="post" th:action="@{/submit}">
-                              <input type="text" class="mail_text" placeholder="ID" name="username">
-                              <input type="text" class="mail_text" placeholder="Password" name="password">
-                              <button type="submit" class="send_bt" data-toggle="modal" data-target="#signuModel"><a>회원 가입</a></button>
+                              <form action="/signup" method="post" th:object="${memberRequestDTO}" th:action="@{/signup}">
+                                 <input type="text" class="mail_text" placeholder="ID" name="username" th:field="*{username}">
+                                 <input type="text" class="mail_text" placeholder="Password" name="password" th:field="*{password}">
+                                 <input type="text" class="mail_text" placeholder="Email" name="email" th:field="*{email}">
+                                 <input type="text" class="mail_text" placeholder="Nickname" name="nickname" th:field="*{nickname}">
+                                 <input type="text" class="mail_text" placeholder="Role" name="role" th:field="*{role}" th:value="${memberRequestDTO.role ?: 'USER'}">
+                                 <button type="submit" class="send_bt" data-toggle="modal" data-target="#signuModel"><a>회원 가입</a></button>
                               </form>
                            </div>
                         </div>
