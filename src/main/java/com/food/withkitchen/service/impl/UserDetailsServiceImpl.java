@@ -1,5 +1,6 @@
 package com.food.withkitchen.service.impl;
 
+import com.food.withkitchen.entity.Member;
 import com.food.withkitchen.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -8,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("[loadUserByUsername] loadUserByUsername 수행. username: {}", username);
-        return memberRepository.getByUid(username);
+        Optional<Member> member = memberRepository.findByUsername(username);
+
+        if (member.isPresent()) {
+            logger.info("[loadUserByUsername] loadUserByUsername 성공. username: {}", username);
+            return member.get();
+        }
+
+        throw new UsernameNotFoundException("존재하지 않거나 유효하지 않은 사용자입니다.");
     }
 
 }
