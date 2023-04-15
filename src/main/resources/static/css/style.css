@@ -175,6 +175,21 @@ img {
     box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
 }
 
+.form-check {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-check-input {
+    margin-left: 5px;
+}
+
+.form-check-label {
+    margin-left: 25px;
+}
+
+
 .navbar-form input {
     border: none !important;
 }
@@ -689,6 +704,10 @@ figure:hover+span {
 .mail_section_1 {
     width: 100%;
     float: left;
+}
+
+.send_bt {
+    /* send_bt 클래스에 대한 스타일링 */
 }
 
 .mail_text {
