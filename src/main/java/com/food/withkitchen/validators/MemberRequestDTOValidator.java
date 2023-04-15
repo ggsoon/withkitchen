@@ -2,11 +2,11 @@ package com.food.withkitchen.validators;
 
 import com.food.withkitchen.dto.MemberRequestDTO;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.parameters.P;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class MemberRequestDTOValidator implements Validator {
+
     @Override
     public boolean supports(Class<?> clazz) {
         return MemberRequestDTO.class.isAssignableFrom(clazz);
