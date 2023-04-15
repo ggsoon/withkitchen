@@ -12,7 +12,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-sm-12">
-                        <h1 class="signup_taital">아래 정보를 모두 입력해주세요.<br>단, 관리자면 Role에 관리자 코드를 넣어주시고 일반 고객일경우 입력하지 말아 주세요.</h1>
+                        <h1 class="signup_taital">아래 정보를 모두 입력해주세요.<br>단, 관리자일 경우 Role에 관리자 코드를 넣어주시고 일반 고객일경우 입력하지 말아 주세요.</h1>
                      </div>
                   </div>
                </div>
@@ -21,35 +21,21 @@
                      <div class="row">
                         <div class="col-md-6">
                            <div class="mail_section_1">
-                              <form action="/signup" method="post" th:object="${memberRequestDTO}" th:action="@{/signup}">
+                              <form th:action="@{/signup}" method="post" th:object="${memberRequestDTO}">
                                  <input type="text" class="mail_text" placeholder="ID" name="username" th:field="*{username}">
+                                 <span th:if="*{#fields.hasErrors('username')}"><p th:errors="*{username}"></p></span>
                                  <input type="text" class="mail_text" placeholder="Password" name="password" th:field="*{password}">
+                                 <span th:if="*{#fields.hasErrors('password')}"><p th:errors="*{password}"></p></span>
                                  <input type="text" class="mail_text" placeholder="Email" name="email" th:field="*{email}">
+                                 <span th:if="*{#fields.hasErrors('email')}"><p th:errors="*{email}"></p></span>
                                  <input type="text" class="mail_text" placeholder="Nickname" name="nickname" th:field="*{nickname}">
-                                 <input type="text" class="mail_text" placeholder="Role" name="role" th:field="*{role}" th:value="${memberRequestDTO.role ?: 'USER'}">
-                                 <button type="submit" class="send_bt" data-toggle="modal" data-target="#signuModel"><a>회원 가입</a></button>
+                                 <span th:if="*{#fields.hasErrors('nickname')}"><p th:errors="*{nickname}"></p></span>
+                                 <input type="text" class="mail_text" placeholder="Role" name="role" th:field="*{role}" th:value="${role ?: 'USER'}">
+                                 <span th:if="*{#fields.hasErrors('role')}"><p th:errors="*{role}"></p></span>
+                                 <button type="submit" class="send_bt"><a>회원 가입</a></button>
                               </form>
                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- signin section end -->
-            <div class="modal" tabindex="-1" role="dialog" id="myModal">
-               <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title">가입 완료</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                        </button>
-                     </div>
-                     <div class="modal-body">
-                        <p>가입이 완료되었습니다.</p>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                      </div>
                   </div>
                </div>
