@@ -21,15 +21,20 @@
                      <div class="row">
                         <div class="col-md-6">
                            <div class="mail_section_1">
-                              <input type="text" class="mail_text" placeholder="ID" name="id">
-                              <input type="text" class="mail_text" placeholder="Password" name="password">
-                              <div class="send_bt"><a href="#">로그인</a></div>
+                              <form th:action="@{/login}" method="post" th:object="${memberLoginDTO}">
+                              <input type="text" class="mail_text" placeholder="ID" name="username" th:field="*{username}">
+                              <span th:if="*{#fields.hasErrors('username')}"><p th:errors="*{username}"></p></span>
+                              <input type="text" class="mail_text" placeholder="Password" name="password" th:field="*{password}">
+                              <span th:if="*{#fields.hasErrors('password')}"><p th:errors="*{password}"></p></span>
+                              <button type="submit" class="send_bt"><a>로그인</a></button>
+<!--                              <div class="send_bt"><a href="#">로그인</a></div>-->
                               <div class="form-check">
                                  <input class="form-check-input" type="checkbox" name="remember-me" id="rememberMe">
                                  <label class="form-check-label" for="rememberMe">
                                     자동 로그인
                                  </label>
                               </div>
+                              </form>
                               </div>
                            </div>
                         </div>
@@ -37,6 +42,7 @@
                   </div>
                </div>
             </div>
+
             <!-- signup section end -->
             <!-- layout_border end -->
          </div>
