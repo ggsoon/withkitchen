@@ -6,13 +6,12 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-// 회원 서비스 요청시 Member Request
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
-public class MemberRequestDTO {
+public class MemberSignUpDTO {
 
     private Long id;
 

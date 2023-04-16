@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.validation.BindingResult;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class MemberResponseDTO {
+public class SignUpResultDTO {
 
     private int code;
 
