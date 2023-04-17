@@ -10,11 +10,15 @@
         <h3 class="footer_text">바로가기</h3>
         <div class="footer_menu">
           <ul>
-            <li class="active"><a href="home"><span class="angle_icon active"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 위드키친</a></li>
-            <li><a href="shop"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 상품</a></li>
-            <li><a href="about"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>  소개</a></li>
-            <li><a href="signin"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 로그인</a></li>
-            <li><a href="signup"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>  회원가입</a></li>
+            <li class="active"><a href="/home"><span class="angle_icon active"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 위드키친</a></li>
+            <li><a href="/shop"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 상품</a></li>
+            <li><a href="/about"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 소개</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/login"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 로그인</a></li>
+            <li sec:authorize="!isAuthenticated()"><a href="/signup"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 회원가입</a></li>
+            <li sec:authorize="hasRole('ROLE_USER')"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 마이페이지</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 관리자페이지</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout"><span class="angle_icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> 로그아웃</a></li>
+
           </ul>
         </div>
       </div>

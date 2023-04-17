@@ -12,8 +12,8 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-12">
-                        <h1 class="about_taital">About Us</h1>
-                        <p class="about_text">Passages of Lorem Ipsum available, but the majority have suffered alteration </p>
+                        <h1 class="about_taital">저희와 함께해주셔서 감사합니다!</h1>
+                        <p class="about_text">로그인 버튼을 눌러 로그인 하실 수 있습니다!</p>
                      </div>
                   </div>
                   <div class="about_section_2">
@@ -23,9 +23,10 @@
                         <div class="about_img"><img src="images/about-img.png"></div>
                      </div>
                      <div class="col-md-6">
-                        <div class="fresh_taital">Fresh any</div>
-                        <p class="ipsum_text">Variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomisedvariations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                        <div class="read_bt"><a href="#">Read More</a></div>
+                        <div class="fresh_taital">신선한 재료</div>
+                        <p class="ipsum_text">신선한 식재료를 엄선하여 건강과 맛을 제공하고 있습니다.<br>고객님들이 항상 신선한 음식을 드실 수 있도록 노력하겠습니다!</p>
+                        <div class="read_bt" sec:authorize="!isAuthenticated()"><a href="login">로그인</a></div>
+                        <div class="read_bt" sec:authorize="isAuthenticated()"><a href="shop">상품보기</a></div>
                      </div>
                   </div>
                </div>
