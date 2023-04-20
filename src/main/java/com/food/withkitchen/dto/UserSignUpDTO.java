@@ -11,9 +11,7 @@ import javax.validation.constraints.Pattern;
 @Builder
 @Getter
 @Setter
-public class MemberSignUpDTO {
-
-    private Long id;
+public class UserSignUpDTO {
 
     @NotBlank(message = "아이디를 입력해주세요.")
     @Pattern(regexp = "^[a-z0-9]{4,10}$", message = "아이디는 4~10자리로 영어 소문자와 숫자만 넣을 수 있습니다.")

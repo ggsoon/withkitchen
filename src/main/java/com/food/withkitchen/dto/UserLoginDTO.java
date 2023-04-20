@@ -5,12 +5,14 @@ import lombok.*;
 import javax.validation.constraints.NotBlank;
 
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 @Builder
-public class MemberLoginDTO {
+@Getter
+@Setter
+public class UserLoginDTO {
+
+    private Long id;
 
     @NotBlank(message = "아이디를 입력해주세요.")
     private String username;
